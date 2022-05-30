@@ -6,7 +6,7 @@ https://user-images.githubusercontent.com/13891260/170899848-41cef538-efcf-44e2-
 
 
 ## Installation
-The only required file is `slicy.lua`, so simply drop it into the root of your Love2D project.
+The only required file is `slicy.lua`, so simply drop it into the root of your Love2D project. Alternatively, you can also clone the entire repository into the root directory.
 
 ## About
 9-slicing is a technique where only specific segments of an image are scaled. This allows for the corners (and even the edges in some cases) to suffer no distortion from resizing.
