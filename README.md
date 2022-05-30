@@ -35,3 +35,6 @@ If this weren't pixel art, instead of a single pixel, we would place black pixel
 
 ### The content part
 The content part is... also easy! Same thing as the scale part, except we set the range with black pixels on the right and bottom metadata. Pixels outside this range will never be included in the content window (technically it only sets a padding, but for 99% of cases it should work fine just thinking of it as an this-is-ok-range).
+
+## Thanks!
+To you for reading and/or using slicy, and to [Buch](https://opengameart.org/users/buch) for making the [panel used for the demo](https://opengameart.org/content/sci-fi-user-interface-elements).
