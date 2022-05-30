@@ -21,8 +21,12 @@ The file format (`*.9.png`) is a regular PNG file, with 2 added rows and columns
 The goal is to make this pane be adjustable as in the video demo above. To do this, we need to give slicy 2 bits of information:
 
 - Which parts are safe to scale
-- Which parts are safe to display content on
+- Which parts are safe to display content on (e.g., so we don't place text over the borders)
 
+#### The scale part
 The scale part is easy: since this is pixel art, we can just grab a 1 pixel slice from the "edges" and call it a day. To do this, we mark the region (in this case, a single pixel on each axis) with black in the left and top metadata. The image outside this range will never be scaled, so the corners are safe.
 
+If this weren't pixel art, instead of a single pixel, we would place black pixels over the range we're ok with stretching and shrinking.
+
+#### The content part
 The content part is... also easy! Same thing as the scale part, except we set the range with black pixels on the right and bottom metadata. Pixels outside this range will never be included in the content window (technically it only sets a padding, but for 99% of cases it should work fine just thinking of it as an this-is-ok-range).
