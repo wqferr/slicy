@@ -13,7 +13,12 @@ The only required file is `slicy.lua`, so simply drop it into the root of your L
 
 This library was created as a more modern version of [patchy](https://github.com/excessive/patchy), since it has some issues with its content window algorithm, is 3 years old as of writing this, and, to be quite frank, I just wanted to code this, it was fun.
 
-### File format
+## Demo
+The demo video was recorded using the `main.lua` provided in the directory. Running `love .` should provide you with the exact same demo I used to record.
+
+Use the arrow keys to adjust window size. Press spacebar to toggle debug draw mode.
+
+## File format
 The file format (`*.9.png`) is a regular PNG file, with 2 added rows and columns, 1 on each side. These will be called the "metadata" from now on. Here's an example of a `.9.png` file:
 
 ![ScaledPane 9](https://user-images.githubusercontent.com/13891260/170900996-57628dcc-4013-4744-96eb-0acb4f98e068.png)
@@ -23,10 +28,10 @@ The goal is to make this pane be adjustable as in the video demo above. To do th
 - Which parts are safe to scale
 - Which parts are safe to display content on (e.g., so we don't place text over the borders)
 
-#### The scale part
+### The scale part
 The scale part is easy: since this is pixel art, we can just grab a 1 pixel slice from the "edges" and call it a day. To do this, we mark the region (in this case, a single pixel on each axis) with black in the left and top metadata. The image outside this range will never be scaled, so the corners are safe.
 
 If this weren't pixel art, instead of a single pixel, we would place black pixels over the range we're ok with stretching and shrinking.
 
-#### The content part
+### The content part
 The content part is... also easy! Same thing as the scale part, except we set the range with black pixels on the right and bottom metadata. Pixels outside this range will never be included in the content window (technically it only sets a padding, but for 99% of cases it should work fine just thinking of it as an this-is-ok-range).
